@@ -4,7 +4,7 @@ import YAML from 'yaml'
 type commandList = {[key:string]:Array<string>};
 type commandFile = {[key:string]:{aliases:Array<string>, replies:Array<string>}};
 
-function fetchCommands(): commandList {
+export default function fetchCommands(): commandList {
     const allCommands : commandList = {};
 
     fs.readdirSync('./commands').forEach((file:string) => {
@@ -24,5 +24,3 @@ function fetchCommands(): commandList {
     });
     return allCommands;
 };
-
-export default fetchCommands;
