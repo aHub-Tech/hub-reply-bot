@@ -1,0 +1,28 @@
+{
+    "name": "reply-hubble-bot",
+    "version": "1.0.0",
+    "description": "hybrid chatbot that replies twitch and discord messages",
+    "main": "dist/index.js",
+    "scripts": {
+        "start": "node .",
+        "build": "tsc"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ahub-tech/twitch-hubble-bot"
+    },
+    "author": "Rodrigo Dornelles",
+    "license": "GPL-3.0-or-later",
+    "bugs": {
+        "url": "https://github.com/ahub-tech/twitch-hubble-bot/issues"
+    },
+    "homepage": "https://github.com/ahub-tech/twitch-hubble-bot#readme",
+    "dependencies": {
+        "typescript": "^4.3.5",
+        "yaml": "^1.10.2"
+    },
+    "devDependencies": {
+        "@types/yaml": "^1.9.7",
+        "@types/node": "^16.6.1"
+    }
+}
