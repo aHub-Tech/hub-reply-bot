@@ -1,6 +1,7 @@
 import { choice } from './utils';
 import { env, loadEnv } from './env'
 import fetchCommands from './fetch-commands'
+import connectToTwitch from './api-twitch'
 import connectToDiscord from './api-discord'
 
 loadEnv();
@@ -10,8 +11,11 @@ function handleCommand(command: string): string | null {
     return choice(myCommands[command]); 
 }
 
+connectToTwitch({
+    limiter: 5,
+    triger: handleCommand
+});
+
 connectToDiscord({
-    token: env.DISCORD_SECRET_TOKEN,
-    prefix: env.DISCORD_COMMAND_PREFIX,
     triger: handleCommand
 });

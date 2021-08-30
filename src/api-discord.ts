@@ -1,8 +1,8 @@
 import { Client, Intents } from 'discord.js';
+import { cmd } from './utils'
+import { env } from './env'
 
 type discordConfig = {
-    token: string,
-    prefix: string,
     triger: (command: string) => string | null
 };
 
@@ -18,13 +18,11 @@ export default function connectToDiscord (config: discordConfig)
 
     client.on('messageCreate', (message) => {
         if (message.author.bot) return;
-        if (!message.content.startsWith(config.prefix)) return;
+        if (!message.content.startsWith(env.DISCORD_COMMAND_PREFIX)) return;
 
-        // get command called
-        let command = message.content.toLowerCase().slice(1).split(' ').shift() ?? '';
 
         // call command handler and get response
-        let response = config.triger(command);
+        let response = config.triger(cmd(message.content));
         
         // whitout response, don´t send anything
         if (!response) return;
@@ -39,8 +37,8 @@ export default function connectToDiscord (config: discordConfig)
     });
 
     client.on('ready', () => {
-        console.log(' > Discord connected.');
+        console.log(' > Discord is connected.');
     });
 
-    client.login(config.token);
+    client.login(env.DISCORD_SECRET_TOKEN);
 }

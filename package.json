@@ -18,13 +18,15 @@
     },
     "homepage": "https://github.com/ahub-tech/twitch-hubble-bot#readme",
     "dependencies": {
-        "dotenv": "^10.0.0",
-        "ts-dotenv": "^0.8.3",
         "discord.js": "^13.1.0",
+        "dotenv": "^10.0.0",
+        "tmi.js": "^1.8.5",
+        "ts-dotenv": "^0.8.3",
         "typescript": "^4.3.5",
         "yaml": "^1.10.2"
     },
     "devDependencies": {
+        "@types/tmi.js": "^1.7.2",
         "@types/node": "^16.6.1",
         "@types/yaml": "^1.9.7"
     }
