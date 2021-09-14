@@ -20,7 +20,6 @@ export default function connectToDiscord (config: discordConfig)
         if (message.author.bot) return;
         if (!message.content.startsWith(env.DISCORD_COMMAND_PREFIX)) return;
 
-
         // call command handler and get response
         let response = config.triger(cmd(message.content));
         
