@@ -3,7 +3,6 @@ import { chunk, cmd, TwitchEvent } from './utils';
 import { env } from './env'
 
 type twitchConfig = {
-    limiter: number,
     triger: (command: string) => string | null
 };
 
@@ -15,7 +14,7 @@ export default function connectToTwitch(config: twitchConfig) {
      * create multiple channels connections nodes
      * to keep the bot functional on everyone at the same time
      */
-    chunk(channels, config.limiter).forEach((channelsChunk) => {
+    chunk(channels, env.TWITCH_CLUSTER_SIZE).forEach((channelsChunk) => {
         clients.push(
             new Client({ 
                 options: { 

@@ -12,7 +12,6 @@ function handleCommand(command: string): string | null {
 }
 
 connectToTwitch({
-    limiter: 5,
     triger: handleCommand
 });
 
