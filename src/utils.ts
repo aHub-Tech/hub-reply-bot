@@ -18,3 +18,17 @@ export function cmd(text: string) {
     if (!text) return '';
     return text.toLowerCase().slice(1).split(' ').shift() ?? '';
 }
+
+export enum DiscordEvent {
+    Message = 'messageCreate',
+    ClientReady = 'ready',
+}
+
+export enum TwitchEvent {
+    Message = 'message',
+    ClientReady = 'join',
+    ClientLogon = 'logon',
+    ClientConnected = 'connected',
+    ClientConnecting = 'connecting',
+    ClientDisconnected = 'disconnected',
+}

@@ -1,5 +1,5 @@
 import { Client, Intents } from 'discord.js';
-import { cmd } from './utils'
+import { cmd, DiscordEvent } from './utils'
 import { env } from './env'
 
 type discordConfig = {
@@ -16,7 +16,7 @@ export default function connectToDiscord (config: discordConfig)
 {
     const client = new Client({intents});
 
-    client.on('messageCreate', (message) => {
+    client.on(DiscordEvent.Message, (message) => {
         if (message.author.bot) return;
         if (!message.content.startsWith(env.DISCORD_COMMAND_PREFIX)) return;
 
@@ -35,7 +35,7 @@ export default function connectToDiscord (config: discordConfig)
         });
     });
 
-    client.on('ready', () => {
+    client.on(DiscordEvent.ClientReady, () => {
         console.log(' > Discord is connected.');
     });
 

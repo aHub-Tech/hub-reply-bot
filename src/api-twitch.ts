@@ -1,5 +1,5 @@
 import { client, Client } from 'tmi.js'
-import { chunk, cmd } from './utils';
+import { chunk, cmd, TwitchEvent } from './utils';
 import { env } from './env'
 
 type twitchConfig = {
@@ -35,7 +35,7 @@ export default function connectToTwitch(config: twitchConfig) {
     });
     
     clients.forEach((client) => {
-        client.on('message', (channel, tags, message, self) => {
+        client.on(TwitchEvent.Message, (channel, tags, message, self) => {
             if (self) return;
             if (!message.startsWith(env.TWITCH_COMMAND_PREFIX)) return;
 
@@ -51,10 +51,11 @@ export default function connectToTwitch(config: twitchConfig) {
 
     // twitch logs
     clients.forEach((client, index) => {
-        client.on("logon", () => console.log(` > twitch node ${index + 1} logon on server!`));
-        client.on("connected", (address, port) => console.log(` > twitch node ${index + 1} is connected!`));
-        client.on("connecting", (address, port) => console.log(` > twitch node ${index + 1} connecting...`));
-        client.on("disconnected", (reason) => console.log(` > twitch node ${index + 1} is disconnected!`));
+        client.on(TwitchEvent.ClientLogon, () => console.log(` > twitch node ${index + 1} logon on server!`));
+        client.on(TwitchEvent.ClientConnected, (address, port) => console.log(` > twitch node ${index + 1} is connected!`));
+        client.on(TwitchEvent.ClientConnecting, (address, port) => console.log(` > twitch node ${index + 1} connecting...`));
+        client.on(TwitchEvent.ClientDisconnected, (reason) => console.log(` > twitch node ${index + 1} is disconnected!`));
+        client.on(TwitchEvent.ClientReady, (channel, username, self) => console.log(` > twitch node ${index + 1} join in the ${channel} channel.`));
     }); 
 
     // start all nodes
