@@ -21,7 +21,7 @@ export default function connectToDiscord (config: discordConfig)
         if (!message.content.startsWith(env.DISCORD_COMMAND_PREFIX)) return;
 
         // call command handler and get response
-        let response = config.triger(cmd(message.content));
+        const response = config.triger(cmd(message.content));
         
         // whitout response, don´t send anything
         if (!response) return;

@@ -4,12 +4,11 @@ export function choice<Item = unknown>(arr?: Item[] | null) {
 }
 
 export function chunk<Item = unknown>(arr: Item[], len: number) {
-    let chunks : Array<Array<Item>> = [];
-    let n = arr.length;
+    const chunks : Array<Array<Item>> = [];
     let i = 0;
 
-    while (i < n) {
-        chunks.push(arr.slice(i, i += len));
+    while (i < arr.length) {
+        chunks.push(arr.slice(i, i += arr.length));
     }
 
     return chunks;

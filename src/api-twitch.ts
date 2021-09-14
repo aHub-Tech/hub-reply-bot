@@ -40,7 +40,7 @@ export default function connectToTwitch(config: twitchConfig) {
             if (!message.startsWith(env.TWITCH_COMMAND_PREFIX)) return;
 
             // call command handler and get response
-            let response = config.triger(cmd(message));
+            const response = config.triger(cmd(message));
             
             // whitout response, don´t send anything
             if (!response) return;
