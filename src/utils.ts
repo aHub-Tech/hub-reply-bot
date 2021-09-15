@@ -8,7 +8,7 @@ export function chunk<Item = unknown>(arr: Item[], len: number) {
     let i = 0;
 
     while (i < arr.length) {
-        chunks.push(arr.slice(i, i += arr.length));
+        chunks.push(arr.slice(i, i += len));
     }
 
     return chunks;
