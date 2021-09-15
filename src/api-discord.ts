@@ -1,5 +1,5 @@
 import { Client, Intents } from 'discord.js';
-import { cmd, DiscordEvent } from './utils'
+import { cmd, mention, DiscordEvent } from './utils'
 import { env } from './env'
 
 type discordConfig = {
@@ -28,7 +28,7 @@ export default function connectToDiscord (config: discordConfig)
 
         // reply message with response
         message.channel.send({
-            content: response,
+            content: mention(response, `<@${message.author.id}>`),
             reply: {
                 messageReference: message
             }

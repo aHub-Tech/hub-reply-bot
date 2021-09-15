@@ -1,5 +1,5 @@
 import { client, Client } from 'tmi.js'
-import { chunk, cmd, TwitchEvent } from './utils';
+import { chunk, cmd, mention, TwitchEvent } from './utils';
 import { env } from './env'
 
 type twitchConfig = {
@@ -34,7 +34,7 @@ export default function connectToTwitch(config: twitchConfig) {
     });
     
     clients.forEach((client) => {
-        client.on(TwitchEvent.Message, (channel, tags, message, self) => {
+        client.on(TwitchEvent.Message, (channel, userstate, message, self) => {
             if (self) return;
             if (!message.startsWith(env.TWITCH_COMMAND_PREFIX)) return;
 
@@ -44,7 +44,7 @@ export default function connectToTwitch(config: twitchConfig) {
             // whitout response, don´t send anything
             if (!response) return;
 
-            client.say(channel, response);
+            client.say(channel, mention(response, `@${userstate.username}`));
         });
     });
 

@@ -19,13 +19,17 @@ export function cmd(text: string) {
     return text.toLowerCase().slice(1).split(' ').shift() ?? '';
 }
 
+export function mention(text: string, user?: string) {
+    return text.replace(/\@user/gi, user ?? '');
+}
+
 export enum DiscordEvent {
     Message = 'messageCreate',
     ClientReady = 'ready',
 }
 
 export enum TwitchEvent {
-    Message = 'message',
+    Message = 'chat',
     ClientReady = 'join',
     ClientLogon = 'logon',
     ClientConnected = 'connected',
