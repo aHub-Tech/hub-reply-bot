@@ -1,5 +1,5 @@
-import { client, Client } from 'tmi.js'
-import { chunk, cmd, mention, TwitchEvent } from './utils';
+import { Client } from 'tmi.js'
+import { chunk, cmd, mention, TwitchEvent, bypassAntiSpam } from './utils';
 import { env } from './env'
 
 type twitchConfig = {
@@ -44,7 +44,7 @@ export default function connectToTwitch(config: twitchConfig) {
             // whitout response, don´t send anything
             if (!response) return;
 
-            client.say(channel, mention(response, `@${userstate.username}`));
+            client.say(channel, bypassAntiSpam(mention(response, `@${userstate.username}`), channel));
         });
     });
 

@@ -12,6 +12,10 @@ export const schema = {
     TWITCH_BOT_USERNAME: String,
     TWITCH_OAUTH_TOKEN: String,
     TWITCH_CHANNELS: String,
+    TWITCH_BYPASS_CHAR: {
+        type: String,
+        default: '.'
+    },
     TWITCH_CLUSTER_SIZE: {
         type: Number,
         default: 5

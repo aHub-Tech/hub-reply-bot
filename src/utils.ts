@@ -1,3 +1,5 @@
+import { env } from './env'
+
 export function choice<Item = unknown>(arr?: Item[] | null) {
     if (!arr?.length) return null;
     return arr[Math.floor(Math.random() * arr.length)] ?? null;
@@ -21,6 +23,17 @@ export function cmd(text: string, prefix: string) {
 
 export function mention(text: string, user?: string) {
     return text.replace(/\<user\>/gi, user ?? '');
+}
+
+// add spaces when message is repeated on the same channel.
+let lastMessage : {[key:string]:string} = {};
+export function bypassAntiSpam(text: string, channel:string)
+{
+    if(text == (lastMessage[channel] ?? '')) {
+        text += env.TWITCH_BYPASS_CHAR;
+    }
+    
+    return lastMessage[channel] = text;
 }
 
 export enum DiscordEvent {
