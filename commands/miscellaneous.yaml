@@ -1,0 +1,7 @@
+ping:
+  replies:
+  - <user> pong!
+
+source:
+  replies:
+  - Confira o meu código fonte https://github.com/ahub-tech/reply-hubble-bot

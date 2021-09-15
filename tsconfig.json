@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+      "baseUrl": "./",
+      "module": "commonjs",
+      "outDir": "./dist",
+      "strict": true,
+      "target": "ES2020",
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "removeComments": true,
+    },
+    "include": [
+      "src/index.ts",
+      "src/*.ts"
+    ]
+}
