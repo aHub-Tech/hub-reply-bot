@@ -14,9 +14,9 @@ export function chunk<Item = unknown>(arr: Item[], len: number) {
     return chunks;
 }
 
-export function cmd(text: string) {
+export function cmd(text: string, prefix: string) {
     if (!text) return '';
-    return text.toLowerCase().slice(1).split(' ').shift() ?? '';
+    return text.toLowerCase().replace(prefix, '').split(' ').shift() ?? '';
 }
 
 export function mention(text: string, user?: string) {
