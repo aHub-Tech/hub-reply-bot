@@ -20,7 +20,7 @@ export function cmd(text: string) {
 }
 
 export function mention(text: string, user?: string) {
-    return text.replace(/\@user/gi, user ?? '');
+    return text.replace(/\<user\>/gi, user ?? '');
 }
 
 export enum DiscordEvent {

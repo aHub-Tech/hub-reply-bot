@@ -17,7 +17,7 @@ export default function fetchCommands(): commandList {
             allCommands[main] = yaml[main].replies;
 
             // add aliases for main command
-            yaml[main].aliases.forEach((alias:string) => {
+            yaml[main].aliases?.forEach((alias:string) => {
                 allCommands[alias] = yaml[main].replies;
             });
         });
