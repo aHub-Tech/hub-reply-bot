@@ -1,5 +1,5 @@
 <h1 align="center">
-    Twitch Hubble Bot
+    Hub Reply Bot
 </h1>
 <details>
   <summary>🇺🇸 English version</summary>
@@ -71,20 +71,26 @@
 
   <h2 id="objetivos" > 🎯 Objetivos </h2>
 
-  Uma breve descrição sobre o projeto e como ele funciona
+  Um simples bot com respostas aleatórias para twitch e discord.
+    
+  Utiliza marcações em yaml, facilitando a adição de novos comandos.
 
   <h2 id="tecnologia"> 🛠 Tecnologias </h2>
 
   As ferramentas utilizadas na construção do projeto foram:
 
-  - [Name Tech](UrlForTheTech)
+  - [TypeScript](https://www.typescriptlang.org)
+  - [Yaml](https://yaml.org)
+  - [tmi.js](https://tmijs.com)
+  - [discord.js](https://discord.js.org)
 
   <h2 id="usos" > 👷 Como usar? </h2>
 
-  - Tecnologias necessárias para rodar localmente.
+  - Você precisa de node e npm instalados em sua maquina.
 
   ```bash
-  # Comandos usados para iniciar o projeto.
+  $ npm install
+  $ npm start
   ```
 
   <h2 id="contribuicao"> 🤝 Contribuições </h2>
@@ -94,7 +100,7 @@
 
   <h2 id="autor"> 💻 Autor </h2>
 
-  By Name ❤
+  By Name RodrigoDornelles ❤
 
   <h2 id="licenca"> 📝 Licença </h2>
 
